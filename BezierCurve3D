@@ -1,0 +1,24 @@
+%BezierCurve3D
+CP=[1 2 3 4 5 6
+-1 2 4 5 4 0
+6 7 2 3 1 10]';
+
+n=size(CP,1)-1;
+
+
+hold on
+for u=0:0.001:1
+    x=0;
+    y=0;
+    z=0;
+    for i=0:n 
+        B=BasisBezier(u,n,i);
+        x=x+B*CP(i+1,1);
+        y=y+B*CP(i+1,2);
+        z=z+B*CP(i+1,3);
+    end
+    plot3(x,y,z,'.k')
+end
+
+plot3(CP(:,1),CP(:,2),CP(:,3),'o');
+plot3(CP(:,1),CP(:,2),CP(:,3));
